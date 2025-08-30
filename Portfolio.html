@@ -147,7 +147,7 @@
 <body>
 
 <header>
-  <div class="logo">Kirtan<span>Soni</span></div>
+  <div class="logo">Pavan<span>Gowda</span></div>
   <nav>
     <a href="#">Home</a>
     <a href="#about">About</a>
@@ -156,15 +156,15 @@
     <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
   </nav>
-  <span class="settings">&#9881;</span>
+  <button id="mode-toggle" class="mode-toggle" title="Toggle Dark/Light Mode">&#9790;</button>
 </header>
 
 <div class="container">
   <div class="details">
-    <h1>Hello, I'm <span>Kirtan Soni</span></h1>
+    <h1>Hello, I'm <span style="color:#356be7; text-decoration:underline;">A Pavan Gowda</span></h1>
     <h2>Data Analyst &amp; AI/ML Enthusiast</h2>
     <p>
-      Aspiring Data Analyst with experience in data processing, visualization, and statistical analysis.<br>
+      I am passionate about data collection, analysis, and telling compelling data stories. I also love creating useful web projects that solve real-world problems and make an impact.<br>
       Passionate about leveraging AI and ML to derive meaningful insights from complex datasets.
     </p>
     <div class="action-btns">
@@ -606,8 +606,111 @@ document.querySelector('.contact-form').addEventListener('submit',function(e){
   this.reset();
   setTimeout(()=>document.getElementById('form-status').innerText='',3100);
 });
+
+// Dark/Light mode toggle
+const modeToggle = document.getElementById('mode-toggle');
+const body = document.body;
+function setMode(mode) {
+  if(mode === 'dark') {
+    body.classList.add('dark-mode');
+    modeToggle.innerHTML = '&#9728;'; // sun icon
+    modeToggle.title = "Switch to Light Mode";
+  } else {
+    body.classList.remove('dark-mode');
+    modeToggle.innerHTML = '&#9790;'; // moon icon
+    modeToggle.title = "Switch to Dark Mode";
+  }
+  localStorage.setItem('theme', mode);
+}
+modeToggle.addEventListener('click', () => {
+  setMode(body.classList.contains('dark-mode') ? 'light' : 'dark');
+});
+// On page load, set mode from localStorage
+setMode(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
 </script>
 
+
+<!-- Update dark mode CSS at the end of your <style> section -->
+<style>
+/* ...existing code... */
+.mode-toggle {
+  background: #edeffa;
+  color: #3576e4;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 21px;
+  cursor: pointer;
+  margin-left: 14px;
+  transition: background .18s, color .18s;
+}
+.mode-toggle:hover {
+  background: #3576e4;
+  color: #fff;
+}
+body.dark-mode {
+  background: #181a20;
+  color: #f7faff;
+}
+body.dark-mode header {
+  background: #23263a;
+  box-shadow: 0 2px 12px rgba(50, 100, 210, 0.12);
+}
+body.dark-mode .logo span { color: #7b9cfb; }
+body.dark-mode nav a { color: #f7faff; }
+body.dark-mode nav a:hover { color: #7b9cfb; }
+body.dark-mode .settings { color: #7b9cfb; }
+body.dark-mode .container { background: linear-gradient(100deg, #23263a 80%, #181a20 100%); }
+body.dark-mode .details h1 span { color: #7b9cfb; }
+body.dark-mode .details h2 { color: #7b9cfb; }
+body.dark-mode .btn.primary { background: #7b9cfb; color: #23263a; }
+body.dark-mode .btn.secondary { background: #23263a; color: #7b9cfb; }
+body.dark-mode .social { background: #23263a; color: #7b9cfb; border-color: #23263a; }
+body.dark-mode .social:hover { background: #181a20; }
+body.dark-mode .picture img { box-shadow: 0 8px 36px #23263a; border: 7px solid #23263a; }
+body.dark-mode section, body.dark-mode .contact-form { background: #23263a !important; color: #f7faff !important; }
+body.dark-mode .skill-card { background: #23263a; color: #f7faff; }
+body.dark-mode .icon-bg { background: linear-gradient(120deg,#23263a 60%, #181a20 100%); }
+body.dark-mode .bar-wrap { background: #181a20; }
+body.dark-mode .project-card { background: #23263a; color: #f7faff; }
+body.dark-mode .proj-title { color: #f7faff; }
+body.dark-mode .proj-img { background: #181a20; }
+body.dark-mode .filter-btn { background: #23263a; color: #f7faff; }
+body.dark-mode .filter-btn.active, body.dark-mode .filter-btn:hover { background: #7b9cfb; color: #23263a; }
+body.dark-mode .gs-btn { box-shadow: 0 4px 16px #7b9cfb88; }
+body.dark-mode .gs-btn:hover { color: #23263a; }
+body.dark-mode .c-input { background: #f7faff; color: #23263a; border-color: #7b9cfb; }
+body.dark-mode .c-input:focus { border-color: #7b9cfb; }
+body.dark-mode .c-btn { background: #7b9cfb; color: #23263a; }
+body.dark-mode .c-btn:hover { background: #181a20; color: #f7faff; }
+
+/* Headings in dark mode */
+body.dark-mode .contact-form h2,
+body.dark-mode #contact h2,
+body.dark-mode #projects h2,
+body.dark-mode #skills h2 {
+  color: #fff !important;
+}
+
+/* Make contact form light in dark mode */
+body.dark-mode .contact-form {
+  background: #f7faff !important;
+  color: #23263a !important;
+}
+body.dark-mode .contact-form label {
+  color: #23263a !important;
+}
+body.dark-mode .contact-form .c-btn {
+  background: #3576e4;
+  color: #fff;
+}
+body.dark-mode .contact-form .c-btn:hover {
+  background: #181717;
+  color: #fff;
+}
+</style>
+<!-- ...existing code... -->
 
 </body>
 </html>
