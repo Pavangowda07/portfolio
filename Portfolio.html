@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Add Montserrat font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Add Font Awesome CDN in <head> if not already present -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
       font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
@@ -139,43 +141,57 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      min-width: 180px;
+      min-height: 180px;
     }
     .jelly-frame {
       position: absolute;
       width: 285px;
       height: 285px;
-      border-radius: 50%;
+      border-radius: 50%; /* Ensures perfect circle */
       pointer-events: none;
       z-index: 1;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 0 8px #fff8e1, 0 0 32px #ffe7b2;
-      animation: jellyMove 2.8s infinite cubic-bezier(.53,-0.62,.47,1.56);
-      border: 4px solid #fff8e1;
-      transition: box-shadow 0.3s;
+      border: 4px solid #3576e4;
+      box-shadow: 0 0 0 8px #3576e4, 0 0 32px #bdd7fa;
+      animation: jellyWave 3.2s infinite cubic-bezier(.53,-0.62,.47,1.56);
+      transition: box-shadow 0.3s, border-color 0.3s;
     }
-    @keyframes jellyMove {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      20% { transform: translate(-50%, -50%) scale(1.06, 0.96); }
-      40% { transform: translate(-50%, -50%) scale(0.96, 1.06); }
-      60% { transform: translate(-50%, -50%) scale(1.04, 0.98); }
-      80% { transform: translate(-50%, -50%) scale(0.98, 1.04); }
+    @keyframes jellyWave {
+      0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      20% { transform: translate(-50%, -50%) scale(1.08) rotate(8deg); }
+      40% { transform: translate(-50%, -50%) scale(0.93) rotate(-8deg); }
+      60% { transform: translate(-50%, -50%) scale(1.04) rotate(6deg); }
+      80% { transform: translate(-50%, -50%) scale(0.98) rotate(-6deg); }
     }
     .picture img {
       width: 265px;
       height: 265px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 8px 36px #bdd7fa;
+      box-shadow: 0 8px 36px #bdd7fa, 0 0 0 12px #edeffa;
       border: 7px solid #f6faff;
       position: relative;
       z-index: 2;
-      animation: floatPic 3.2s infinite ease-in-out;
+      animation: floatSpin 4s infinite ease-in-out;
     }
-    @keyframes floatPic {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+    @keyframes floatSpin {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(3deg); }
+      50% { transform: translateY(-18px) rotate(-3deg); }
+      75% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    /* Dark mode adjustments */
+    body.dark-mode .jelly-frame {
+      border: 4px solid #fff8e1;
+      box-shadow: 0 0 0 8px #fff8e1, 0 0 32px #ffe7b2;
+    }
+    body.dark-mode .picture img {
+      box-shadow: 0 8px 36px #23263a, 0 0 0 12px #7b9cfb;
+      border: 7px solid #23263a;
     }
     @media (max-width: 1200px) {
   .container {
@@ -277,12 +293,13 @@
 .btn,
 .filter-btn,
 .gs-btn,
-.c-btn {
+.c-btn,
+.footer-social {
   transition: 
-    transform 0.22s cubic-bezier(.53,-0.62,.47,1.56),
-    box-shadow 0.18s,
-    background 0.18s,
-    color 0.18s;
+    transform 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+    background 0.18s cubic-bezier(.4,0,.2,1),
+    color 0.18s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
 
@@ -290,9 +307,10 @@
 .filter-btn:hover,
 .filter-btn.active,
 .gs-btn:hover,
-.c-btn:hover {
-  transform: scale(1.08) translateY(-2px) rotate(-2deg);
-  box-shadow: 0 8px 32px #3576e488, 0 2px 8px #bdd7fa44;
+.c-btn:hover,
+.footer-social:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 24px #3576e488;
   z-index: 2;
 }
 
@@ -356,11 +374,18 @@
       <button class="btn secondary" onclick="window.open('Kirtan_Soni_CV.pdf')">Download CV</button>
     </div>
     <div class="socials">
-      <a href="https://linkedin.com/" class="social" title="LinkedIn" target="_blank">&#128100;</a>
-      <a href="https://github.com/" class="social" title="GitHub" target="_blank">&#128187;</a>
-      <a href="mailto:kirtan@email.com" class="social" title="Email">&#9993;</a>
-      <a href="https://twitter.com/" class="social" title="X/Twitter" target="_blank">&#120143;</a>
-      <a href="https://instagram.com/" class="social" title="Instagram" target="_blank">&#128247;</a>
+      <a href="https://www.linkedin.com/in/apavangowda/" class="social" title="LinkedIn" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/Pavangowda07" class="social" title="GitHub" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="mailto:pavangowda1034@gmail.com" class="social" title="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="https://instagram.com/" class="social" title="Instagram" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
     </div>
   </div>
   <div class="picture">
@@ -465,12 +490,6 @@
         <div class="skill-label" style="color:#222;">Machine Learning</div>
         <div class="bar-wrap"><div class="bar" style="background: #21bbda;"></div></div>
       </div>
-      <!-- Tableau -->
-      <div class="skill-card" data-percent="80">
-        <div class="icon-bg"><img src="https://img.icons8.com/color/96/tableau-software.png"></div>
-        <div class="skill-label" style="color:#7645e9;">Tableau</div>
-        <div class="bar-wrap"><div class="bar" style="background: linear-gradient(90deg,#7b35e4,#7645e9);"></div></div>
-      </div>
     </div>
   </div>
 </section>
@@ -478,8 +497,8 @@
 <style>
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit,minmax(340px,1fr));
+  gap: 38px;
   justify-items: center;
   align-items: stretch;
 }
@@ -487,12 +506,19 @@
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 4px 28px rgba(100,135,230,.09);
-  padding: 30px 25px 28px 25px;
+  padding: 38px 32px 36px 32px;
   text-align: center;
   transition: transform .28s, box-shadow .16s;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .skill-card:hover {
   transform: scale(1.06);
@@ -539,10 +565,12 @@
   width: var(--percent);
 }
 @media (max-width: 900px) {
-  .skills-grid { grid-template-columns: repeat(2,minmax(210px,1fr)); gap:24px; }
+  .skills-grid { grid-template-columns: repeat(2,minmax(260px,1fr)); gap:28px; }
+  .skill-card { min-width: 220px; max-width: 98vw; }
 }
 @media (max-width:600px){
-  .skills-grid { grid-template-columns:1fr; gap:16px;}
+  .skills-grid { grid-template-columns:1fr; gap:18px;}
+  .skill-card { min-width: 0; max-width: 98vw; padding: 24px 8px 24px 8px;}
 }
 </style>
 
@@ -692,11 +720,18 @@ function filterProjects(category) {
     <h2 style="text-align:center;font-size:2.2rem;font-weight:700;margin-bottom:7px;color:#222;">Get in Touch</h2>
     <div style="margin:0 auto 40px auto;width:80px;height:5px;background:#3366ee;border-radius:4px;"></div>
     <div class="get-socials">
-      <a href="mailto:sonikirtan2004@gmail.com" class="gs-btn" style="background:#3366ee;" title="Email"><span>&#9993;</span></a>
-      <a href="https://linkedin.com/" class="gs-btn" style="background:#3cb3ee;" title="LinkedIn" target="_blank"><span>&#128100;</span></a>
-      <a href="https://github.com/" class="gs-btn" style="background:#2d70cb;" title="GitHub" target="_blank"><span>&#128187;</span></a>
-      <a href="https://twitter.com/" class="gs-btn" style="background: linear-gradient(90deg,#7442eb,#ec80c7);" title="X/Twitter" target="_blank"><span>&#120143;</span></a>
-      <a href="https://instagram.com/" class="gs-btn" style="background:#181717;" title="Instagram" target="_blank"><span>&#128247;</span></a>
+      <a href="mailto:pavangowda1034@gmail.com" class="gs-btn" style="background:#3366ee;" title="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/apavangowda/" class="gs-btn" style="background:#3cb3ee;" title="LinkedIn" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/Pavangowda07" class="gs-btn" style="background:#2d70cb;" title="GitHub" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://instagram.com/" class="gs-btn" style="background:#181717;" title="Instagram" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
     </div>
     <form class="contact-form" style="background:#f8fafd;border-radius:26px;box-shadow:0 2px 25px #ddeafd66;padding:38px;margin-top:28px;">
       <label>Your Name</label>
@@ -707,7 +742,9 @@ function filterProjects(category) {
       <input type="text" name="subject" class="c-input" required>
       <label>Message</label>
       <textarea name="message" rows="4" class="c-input" required></textarea>
-      <button type="submit" class="c-btn"><span>&#9993;</span> Send Message</button>
+      <button type="submit" class="c-btn">
+        <i class="fa-solid fa-envelope"></i> Send Message
+      </button>
       <div id="form-status" style="margin-top:14px;font-weight:500;color:#3576e4;"></div>
     </form>
   </div>
@@ -810,8 +847,8 @@ function setMode(mode) {
 modeToggle.addEventListener('click', () => {
   setMode(body.classList.contains('dark-mode') ? 'light' : 'dark');
 });
-// On page load, set mode from localStorage
-setMode(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
+// On page load, set mode from localStorage, default to dark
+setMode(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark');
 </script>
 
 
@@ -853,7 +890,7 @@ body.dark-mode .btn.primary { background: #7b9cfb; color: #23263a; }
 body.dark-mode .btn.secondary { background: #23263a; color: #7b9cfb; }
 body.dark-mode .social { background: #23263a; color: #7b9cfb; border-color: #23263a; }
 body.dark-mode .social:hover { background: #181a20; }
-body.dark-mode .picture img { box-shadow: 0 8px 36px #23263a; border: 7px solid #23263a; }
+body.dark-mode .picture img { box-shadow: 0 8px 36px #23263a, 0 0 0 12px #7b9cfb; border: 7px solid #23263a; }
 body.dark-mode section, body.dark-mode .contact-form { background: #23263a !important; color: #f7faff !important; }
 body.dark-mode .skill-card { background: #23263a; color: #f7faff; }
 body.dark-mode .icon-bg { background: linear-gradient(120deg,#23263a 60%, #181a20 100%); }
@@ -894,8 +931,105 @@ body.dark-mode .contact-form .c-btn:hover {
   background: #181717;
   color: #fff;
 }
+body.dark-mode .skill-card .skill-label {
+  color: #f7faff !important;
+}
+body.dark-mode .skill-card .skill-label[style*="Machine Learning"] {
+  color: #fff !important;
+}
 </style>
 <!-- ...existing code... -->
 
-</body>
-</html>
+<footer style="background: linear-gradient(100deg, #23263a 80%, #181a20 100%); color: #f7faff; padding: 56px 0 0 0; margin-top: 60px;">
+  <div style="max-width:1400px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:48px; padding:0 32px;">
+    <div style="flex:1; min-width:260px;">
+      <div style="margin-bottom:22px;">
+        <span style="font-size:2.2rem; font-weight:700; color:#fff; letter-spacing:1px;">Pavan<span style="color:#7b9cfb;">Gowda</span></span>
+      </div>
+      <div style="font-size:1.13rem; margin-bottom:28px; line-height:1.7; letter-spacing:0.2px;">
+        Data Analyst &amp; AI/ML Enthusiast passionate about transforming data into actionable insights.
+      </div>
+      <div style="display:flex; gap:22px; margin-bottom:18px;">
+        <a href="https://www.linkedin.com/in/apavangowda/" class="footer-social" title="LinkedIn" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Pavangowda07" class="footer-social" title="GitHub" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="mailto:pavangowda1034@gmail.com" class="footer-social" title="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://instagram.com/" class="footer-social" title="Instagram" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div style="flex:1; min-width:220px;">
+      <div style="font-size:1.25rem; font-weight:700; margin-bottom:16px; color:#fff; border-bottom:2px solid #7b9cfb; display:inline-block; padding-bottom:2px; letter-spacing:0.5px;">
+        Quick Links
+      </div>
+      <ul style="list-style:none; padding:0; margin:0; font-size:1.09rem; line-height:2;">
+        <li><a href="#" style="color:#f7faff; text-decoration:none; transition:color .18s;"><span style="margin-right:7px;">&gt;</span>Home</a></li>
+        <li><a href="#about" style="color:#f7faff; text-decoration:none; transition:color .18s;"><span style="margin-right:7px;">&gt;</span>About</a></li>
+        <li><a href="#skills" style="color:#f7faff; text-decoration:none; transition:color .18s;"><span style="margin-right:7px;">&gt;</span>Skills</a></li>
+        <li><a href="#projects" style="color:#f7faff; text-decoration:none; transition:color .18s;"><span style="margin-right:7px;">&gt;</span>Projects</a></li>
+        <li><a href="#certificates" style="color:#f7faff; text-decoration:none; transition:color .18s;"><span style="margin-right:7px;">&gt;</span>Certificates</a></li>
+        <li><a href="#contact" style="color:#f7faff; text-decoration:none; transition:color .18s;"><span style="margin-right:7px;">&gt;</span>Contact</a></li>
+      </ul>
+    </div>
+    <div style="flex:1; min-width:220px;">
+      <div style="font-size:1.25rem; font-weight:700; margin-bottom:16px; color:#fff; border-bottom:2px solid #7b9cfb; display:inline-block; padding-bottom:2px; letter-spacing:0.5px;">
+        Contact Info
+      </div>
+      <div style="margin-bottom:18px; font-size:1.09rem; display:flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-envelope" style="color:#7b9cfb;"></i>
+        <span style="letter-spacing:0.2px;">pavangowda1034@gmail.com</span>
+      </div>
+      <div style="font-size:1.09rem; display:flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-location-dot" style="color:#7b9cfb;"></i>
+        <span style="letter-spacing:0.2px;">Karnataka, India</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:38px; text-align:center; font-size:1rem; color:#bfcbe7; padding-bottom:24px; letter-spacing:0.5px;">
+    &copy; 2025 Pavan Gowda. All rights reserved.
+  </div>
+</footer>
+
+<style>
+.footer-social {
+  background: #23263a;
+  color: #7b9cfb;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 2px 12px #3576e488;
+  transition: background 0.18s, color 0.18s, transform 0.18s, box-shadow 0.18s;
+  text-decoration: none;
+}
+.footer-social:hover {
+  background: #7b9cfb;
+  color: #23263a;
+  transform: scale(1.13) translateY(-3px);
+  box-shadow: 0 8px 32px #3576e488;
+}
+body.dark-mode .footer-social {
+  background: #181a20;
+  color: #fff8e1;
+  box-shadow: 0 2px 12px #ffe7b288;
+}
+body.dark-mode .footer-social:hover {
+  background: #fff8e1;
+  color: #23263a;
+}
+footer ul li a:hover {
+  color: #7b9cfb !important;
+}
+body.dark-mode footer ul li a:hover {
+  color: #fff8e1 !important;
+}
+</style>
