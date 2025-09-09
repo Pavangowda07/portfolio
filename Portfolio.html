@@ -143,23 +143,26 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      min-width: 180px;
-      min-height: 180px;
+      min-width: 200px;
+      min-height: 200px;
     }
-    .jelly-frame {
-      position: absolute;
-      width: 285px;
-      height: 285px;
-      border-radius: 50%; /* Ensures perfect circle */
-      pointer-events: none;
-      z-index: 1;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 4px solid #3576e4;
-      box-shadow: 0 0 0 8px #3576e4, 0 0 32px #bdd7fa;
-      animation: jellyWave 3.2s infinite cubic-bezier(.53,-0.62,.47,1.56);
-      transition: box-shadow 0.3s, border-color 0.3s;
+    .picture img {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      max-width: 100%;
+      object-fit: cover;
+      box-shadow: 0 8px 36px #bdd7fa;
+      border: 6px solid #3576e4;
+    }
+    @media (max-width: 600px) {
+      .picture img {
+        width: 220px !important;
+        height: 220px !important;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+      }
     }
     @keyframes jellyWave {
       0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
@@ -167,17 +170,6 @@
       40% { transform: translate(-50%, -50%) scale(0.93) rotate(-8deg); }
       60% { transform: translate(-50%, -50%) scale(1.04) rotate(6deg); }
       80% { transform: translate(-50%, -50%) scale(0.98) rotate(-6deg); }
-    }
-    .picture img {
-      width: 265px;
-      height: 265px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 8px 36px #bdd7fa, 0 0 0 12px #edeffa;
-      border: 7px solid #f6faff;
-      position: relative;
-      z-index: 2;
-      animation: floatSpin 4s infinite ease-in-out;
     }
     @keyframes floatSpin {
       0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -243,8 +235,10 @@
   .picture img, .jelly-frame {
     width: 180px !important;
     height: 180px !important;
-    min-width: 120px;
-    min-height: 120px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    min-width: unset;
+    min-height: unset;
   }
   .jelly-frame {
     border-width: 3px;
@@ -391,7 +385,6 @@
     </div>
   </div>
   <div class="picture">
-    <div class="jelly-frame"></div>
     <img src="pavanicon.jpg" alt="Pavan Gowda Photo">
   </div>
 </div>
@@ -592,6 +585,14 @@ document.querySelectorAll('.skill-card').forEach(card => {
           <div class="certificate-title">Introduction to Data Science</div>
           <div class="certificate-meta">
             <span><i class="fa-solid fa-certificate"></i> Issued by Cisco</span>
+            <span><i class="fa-solid fa-calendar-days"></i> Apr 2024</span>
+          </div>
+        </div>
+      </div>
+      <!-- Certificate 2 -->
+      <div class="certificate-card">
+        <img src="certificate-analytics.jpg" alt="Data Analytics Essentials Certificate" class="certificate-img">
+        <div class="certificate-info">
             <span><i class="fa-solid fa-calendar-days"></i> Apr 2024</span>
           </div>
         </div>
