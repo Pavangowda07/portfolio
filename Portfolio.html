@@ -593,18 +593,10 @@ document.querySelectorAll('.skill-card').forEach(card => {
       <div class="certificate-card">
         <img src="certificate-analytics.jpg" alt="Data Analytics Essentials Certificate" class="certificate-img">
         <div class="certificate-info">
-            <span><i class="fa-solid fa-calendar-days"></i> Apr 2024</span>
-          </div>
-        </div>
-      </div>
-      <!-- Certificate 2 -->
-      <div class="certificate-card">
-        <img src="certificate-analytics.jpg" alt="Data Analytics Essentials Certificate" class="certificate-img">
-        <div class="certificate-info">
           <div class="certificate-title">Data Analytics Essentials</div>
           <div class="certificate-meta">
             <span><i class="fa-solid fa-certificate"></i> Issued by Cisco</span>
-            <span><i class="fa-solid fa-calendar-days"></i> Jun 2024</span>
+            <span><i class="fa-solid fa-calendar-days"></i> Apr 2024</span>
           </div>
         </div>
       </div>
@@ -625,11 +617,23 @@ document.querySelectorAll('.skill-card').forEach(card => {
 
 <style>
 .certificates-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 38px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  justify-items: center;
+  align-items: stretch;
+}
+@media (max-width: 900px) {
+  .certificates-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 }
 .certificate-card {
   background: #fff;
