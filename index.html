@@ -367,9 +367,7 @@
     </p>
     <div class="action-btns">
       <button class="btn primary" onclick="window.location='#contact'">Get in Touch</button>
-      <a class="btn secondary" href="https://drive.google.com/file/d/1bVOgJD5ih2ci4DwbRsFVCZa7XLEQb5pv/view?usp=drive_link" target="_blank" rel="noopener">
-        My Resume
-      </a>
+      <button class="btn secondary" onclick="window.open('Kirtan_Soni_CV.pdf')">Download CV</button>
     </div>
     <div class="socials">
       <a href="https://www.linkedin.com/in/apavangowda/" class="social" title="LinkedIn" target="_blank">
@@ -380,6 +378,9 @@
       </a>
       <a href="mailto:pavangowda1034@gmail.com" class="social" title="Email">
         <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="https://instagram.com/" class="social" title="Instagram" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
       </a>
     </div>
   </div>
@@ -577,31 +578,33 @@ document.querySelectorAll('.skill-card').forEach(card => {
     </h2>
     <div style="width:90px; height:5px; background:#3366ee; margin:0 auto 38px auto; border-radius:4px;"></div>
     <div class="certificates-grid">
-      <!-- Certificate 1 -->
+      <!-- CS50P Certificate -->
       <div class="certificate-card">
-        <img src="CS50P_certificate_pavan.png" alt="Introduction to Data Science Certificate" class="certificate-img">
+        <img src="assests/CS50P_certificate_pavan.png" alt="CS50P Certificate" class="certificate-img">
         <div class="certificate-info">
-          <div class="certificate-title">Introduction to Python Programming</div>
+          <div class="certificate-title">CS50P: Introduction to Programming with Python</div>
           <div class="certificate-meta">
-            <span><i class="fa-solid fa-certificate"></i> Issued by Harvard</span>
-            <span><i class="fa-solid fa-calendar-days"></i>Oct - 2025</span>
+            <span><i class="fa-solid fa-certificate"></i> Issued by Harvard / CS50</span>
+            <span><i class="fa-solid fa-calendar-days"></i> 2024</span>
           </div>
         </div>
       </div>
-      <!-- Certificate 2 -->
+
+      <!-- Data Science (CodeWithHarry) -->
       <div class="certificate-card">
-        <img src="MS_ExcelPic.png" alt="Data Analytics Essentials Certificate" class="certificate-img">
+        <img src="assests/DataScience_codewithharry .png" alt="Data Science Certificate" class="certificate-img">
         <div class="certificate-info">
-          <div class="certificate-title">Introduction to MS Excel</div>
+          <div class="certificate-title">Introduction to Data Science</div>
           <div class="certificate-meta">
-            <span><i class="fa-solid fa-certificate"></i> Issued by simplilearn</span>
-            <span><i class="fa-solid fa-calendar-days"></i> Oct 2025</span>
+            <span><i class="fa-solid fa-certificate"></i> Issued by CodeWithHarry</span>
+            <span><i class="fa-solid fa-calendar-days"></i> 2024</span>
           </div>
         </div>
       </div>
-      <!-- Certificate 3 -->
+
+      <!-- Microsoft Excel Certificate -->
       <div class="certificate-card">
-        <img src="certificate-excel.jpg" alt="Data for Business Analysts Using Microsoft Excel" class="certificate-img">
+        <img src="assests/MS_ExcelPic.png" alt="MS Excel Certificate" class="certificate-img">
         <div class="certificate-info">
           <div class="certificate-title">Data for Business Analysts Using Microsoft Excel</div>
           <div class="certificate-meta">
@@ -616,23 +619,11 @@ document.querySelectorAll('.skill-card').forEach(card => {
 
 <style>
 .certificates-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 38px;
-  justify-items: center;
-  align-items: stretch;
-}
-@media (max-width: 900px) {
-  .certificates-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-@media (max-width: 600px) {
-  .certificates-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 .certificate-card {
   background: #fff;
@@ -863,6 +854,9 @@ function filterProjects(category) {
       <a href="https://github.com/Pavangowda07" class="gs-btn" style="background:#2d70cb;" title="GitHub" target="_blank">
         <i class="fa-brands fa-github"></i>
       </a>
+      <a href="https://instagram.com/" class="gs-btn" style="background:#181717;" title="Instagram" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
     </div>
     <form class="contact-form" style="background:#f8fafd;border-radius:26px;box-shadow:0 2px 25px #ddeafd66;padding:38px;margin-top:28px;">
       <label>Your Name</label>
@@ -911,7 +905,7 @@ function filterProjects(category) {
   font-weight:500;
   margin-bottom:4px;
   margin-top:18px;
-  color:#232323;
+  color:#222;
   font-size:1.07rem;
 }
 .c-input {
@@ -1089,6 +1083,9 @@ body.dark-mode .skill-card .skill-label[style*="Machine Learning"] {
         </a>
         <a href="mailto:pavangowda1034@gmail.com" class="footer-social" title="Email">
           <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://instagram.com/" class="footer-social" title="Instagram" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
         </a>
       </div>
     </div>
